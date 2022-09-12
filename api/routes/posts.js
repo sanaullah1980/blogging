@@ -21,7 +21,6 @@ router.get("/", async (req, res) => {
     let posts;
     try {
         if(username){
-            console.log(username)
             posts = await Post.find({username});
         }else if(categoryName){
             posts = await Post.find({
@@ -77,6 +76,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
+        console.log(req.body);
         if(post.username === req.body.username){
             try {
                await post.delete();

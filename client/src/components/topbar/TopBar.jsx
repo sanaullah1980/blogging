@@ -1,10 +1,18 @@
 import React from 'react'
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { Context } from '../../context/context';
 import './topbar.css';
 
 
 const TopBar = () => {
-    const user = false;
+
+    const {user, dispatch} = useContext(Context);
+    const imageFolder = "http://localhost:5000/images/"; 
+
+    const handleLogout = () => {
+        dispatch({type: "LOGOUT"})
+    }
   return (
     <div className='top'>
         <div className="topLeft">
@@ -18,11 +26,11 @@ const TopBar = () => {
                 <li className="topListItem">
                     <Link className='link' to="/">HOME</Link>
                 </li>
-                <li className="topListItem"><Link className='link' to="/about">ABOUT</Link></li>
-                <li className="topListItem"><Link className='link' to="/contact">CONTACT</Link></li>
+                {/* <li className="topListItem"><Link className='link' to="/about">ABOUT</Link></li> */}
+                {/* <li className="topListItem"><Link className='link' to="/contact">CONTACT</Link></li> */}
                 <li className="topListItem"><Link className='link' to="/write">WRITE</Link></li>
                 {
-                    user && <li className="topListItem">LOGOUT</li>
+                    user && <li className="topListItem" onClick={handleLogout}>LOGOUT</li>
                 }
             </ul>
         </div>
@@ -31,8 +39,12 @@ const TopBar = () => {
                user 
                 ?
                     <>
-                        <img className='topImage'
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShEx9e-hIeBMU1JixptLo_kLa2PEnh1cAKNg&usqp=CAU" alt="" />
+                        <Link to="/settings">
+                            <img className='topImage'
+                                src={imageFolder + user.user.profilePic} 
+                                alt="" 
+                            />
+                        </Link>
                         <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>
                     </>            
                 :

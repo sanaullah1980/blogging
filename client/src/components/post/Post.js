@@ -3,13 +3,14 @@ import './post.css';
 import {Link} from "react-router-dom";
 
 const Post = ({post}) => {
+    const imageFolder = "http://localhost:5000/images/";    
   return (
     <div className='post'>
         {
             post.photo &&
             <img
                 className='postImg' 
-                src="https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" 
+                src={imageFolder + post.photo} alt="" 
             />
         }
         <div className="postInfo">
