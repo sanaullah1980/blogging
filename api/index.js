@@ -11,8 +11,10 @@ const multer = require("multer");
 const path = require("path");
 
 const app = express();
+app.use(cors);
 app.use(express.json(), express.urlencoded({extended: true}));
 app.use("/images", express.static(path.join(__dirname, "/images")));
+
 
 dotenv.config({path: './config/config.env'});
 connectDB();
@@ -34,7 +36,7 @@ app.post("/api/upload", upload.single("file"), (req, res)=>{
     res.status(200).json("File has been uploaded");
 });
 
-// app.use(cors);
+
 
 
 app.use("/api/auth", authRoute);

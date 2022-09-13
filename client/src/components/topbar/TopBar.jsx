@@ -41,7 +41,7 @@ const TopBar = () => {
                     <>
                         <Link to="/settings">
                             <img className='topImage'
-                                src={imageFolder + user.user.profilePic} 
+                                src={user.user.profilePic ? imageFolder + user.user.profilePic : imageFolder + "user.jpg"} 
                                 alt="" 
                             />
                         </Link>
