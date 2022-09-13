@@ -11,7 +11,7 @@ const multer = require("multer");
 const path = require("path");
 
 const app = express();
-app.use(cors);
+// app.use(cors);
 app.use(express.json(), express.urlencoded({extended: true}));
 app.use("/images", express.static(path.join(__dirname, "/images")));
 

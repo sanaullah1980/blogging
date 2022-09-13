@@ -82,7 +82,7 @@ const SinglePost = () => {
             }
             <div className="singlePostInfo">
                 <span className="singlePostAuthor">
-                    Author: <Link className='link' to={`/?user=${post.username}`}>{title}</Link> 
+                    Author: <Link className='link' to={`/?user=${post.username}`}>{post.username}</Link> 
                 </span>
                 <span className="singlePostDate">
                     {new Date(post.createdAt).toDateString()}
